@@ -6,7 +6,13 @@
     <string name="input_age_text">Возраст</string>
     <string name="input_currency_text">Валюта</string>
     <string name="input_password_text">Пароль</string>
+    <string name="authorization_text">Авторизация</string>
+    <string name="log_in_text">Вход</string>
+    <string name="registration_text">Регистрация</string>
+    <string name="create_account_text">Создать Аккаунт</string>
+    <string name="create_account_registration_text">Создайте новый аккаунт</string>
     <string name="title_activity_news2">NewsActivity2</string>
+    <string name="email_text">Email</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">Статья про Криптовалюты часть 1</string>
     <string name="second_fragment_label">Статья про Криптовалюты часть 2</string>
