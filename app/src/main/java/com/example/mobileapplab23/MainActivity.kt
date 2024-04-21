@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         val nextButton: Button = findViewById(R.id.button)
         val userLogin: EditText = findViewById(R.id.editTextText)
         val userPassWord: EditText = findViewById(R.id.editTextTextPassword)
+        val authorizationText: TextView = findViewById(R.id.authorizationTextView)
         //val userLogin2: EditText = findViewById(R.id.editTextText2)
         //val userPassWord2: EditText = findViewById(R.id.editTextTextPassword2)
 
@@ -33,6 +35,11 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this, ItemsActivity::class.java)
                 startActivity(intent)
             }
+        }
+        authorizationText.setOnClickListener{
+            val intent = Intent(this, RegistrationActivity::class.java)
+            startActivity(intent)
+
         }
     }
 }

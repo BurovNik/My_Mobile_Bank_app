@@ -9,6 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class ItemsAdapter(var items: List<Item>, var context: Context) : RecyclerView.Adapter<ItemsAdapter.MyViewHolder>() {
+
+    private var selectedPosition = RecyclerView.NO_POSITION
     class MyViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val image: ImageView = view.findViewById(R.id.item_img)
         val title: TextView = view.findViewById(R.id.item_list_title)
@@ -29,6 +31,10 @@ class ItemsAdapter(var items: List<Item>, var context: Context) : RecyclerView.A
         //holder.title.text = items[position].title
         val titleId = context.resources.getIdentifier(items[position].title, "values", context.packageName)
         holder.title.setText(titleId)
+        if (position == selectedPosition) {
+            holder.title.setTextColor(holder.title.context.getColor(R.color.red)) // Изменение цвета на красный
+// Н)
+        }
         //holder.desc.text = items[position].desc
         val descId = context.resources.getIdentifier(items[position].desc, "values", context.packageName)
         holder.desc.setText(descId)
@@ -36,5 +42,13 @@ class ItemsAdapter(var items: List<Item>, var context: Context) : RecyclerView.A
 
         val imageId = context.resources.getIdentifier(items[position].image, "drawable", context.packageName)
         holder.image.setImageResource(imageId)
+
+        holder.itemView.setOnClickListener() {
+            val previousSelectedPosition = selectedPosition
+            selectedPosition = holder.adapterPosition
+            notifyItemChanged(previousSelectedPosition)
+            notifyItemChanged(selectedPosition)
+
+        }
     }
 }
