@@ -14,10 +14,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val nextButton: Button = findViewById(R.id.button)
-        val userLogin: EditText = findViewById(R.id.editTextText)
-        val userPassWord: EditText = findViewById(R.id.editTextTextPassword)
-        val authorizationText: TextView = findViewById(R.id.authorizationTextView)
+        val nextButton: Button = findViewById(R.id.registrationButton)
+        val userLogin: EditText = findViewById(R.id.loginText)
+        val userPassWord: EditText = findViewById(R.id.passwordText)
+        val registrationTextView: TextView = findViewById(R.id.registrationTextView)
         //val userLogin2: EditText = findViewById(R.id.editTextText2)
         //val userPassWord2: EditText = findViewById(R.id.editTextTextPassword2)
 
@@ -32,11 +32,18 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Введите все поля", Toast.LENGTH_SHORT).show()
             else {
                 // val intent = Intent(this, NewsActivity2::class.java)
-                val intent = Intent(this, ItemsActivity::class.java)
-                startActivity(intent)
+                val db = DbHelper(this, null)
+                val isAuth = db.getUser(login, pass)
+                if(isAuth){
+                    val intent = Intent(this, ItemsActivity::class.java)
+                    startActivity(intent)
+                }
+                else
+                    Toast.makeText(this, "Неверно введен логин или пароль", Toast.LENGTH_SHORT).show()
+
             }
         }
-        authorizationText.setOnClickListener{
+        registrationTextView.setOnClickListener{
             val intent = Intent(this, RegistrationActivity::class.java)
             startActivity(intent)
 
